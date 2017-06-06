@@ -72,7 +72,7 @@ def analyze_codesonar_log(target_file):
             t["project"] = t_project
             t["address"] = t_address
 
-            print("%s / %s / %s" % (t["s_time"], t["project"], t["address"]))
+            print("[NEW] %s / %s / %s" % (t["s_time"], t["project"], t["address"]))
 
             log_list.append(t)
         elif LOG_PTN_FINISHED in each_line:
@@ -81,6 +81,7 @@ def analyze_codesonar_log(target_file):
             for item in log_list:
                 if item["project"] == t_project and item["e_time"] == "":
                     item["e_time"] = t_time
+                    print("[FINISHED] %s / %s / %s" % (t["project"], t["s_time"], t["e_time"]))
 
         i = i + 1
 
